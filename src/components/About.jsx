@@ -30,7 +30,8 @@ export default function About() {
       {/* Parallax star field */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.06),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(236,72,153,0.06),transparent_40%),radial-gradient(circle_at_40%_80%,rgba(16,185,129,0.06),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><circle cx=\"2\" cy=\"2\" r=\"1\" fill=\"white\" opacity=\"0.4\"/><circle cx=\"50\" cy=\"30\" r=\"1\" fill=\"white\" opacity=\"0.3\"/><circle cx=\"80\" cy=\"70\" r=\"1\" fill=\"white\" opacity=\"0.35\"/></svg>')] opacity-30 animate-[pulse_6s_ease-in-out_infinite]" />
+        {/* Use a URL-encoded inline SVG to avoid JSX parser issues */}
+        <div className="absolute inset-0 bg-[url(\"data:image/svg+xml,%3Csvg%20width='100'%20height='100'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='2'%20cy='2'%20r='1'%20fill='white'%20opacity='0.4'/%3E%3Ccircle%20cx='50'%20cy='30'%20r='1'%20fill='white'%20opacity='0.3'/%3E%3Ccircle%20cx='80'%20cy='70'%20r='1'%20fill='white'%20opacity='0.35'/%3E%3C/svg%3E\")] opacity-30 animate-[pulse_6s_ease-in-out_infinite]" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
@@ -49,7 +50,7 @@ export default function About() {
             }}
             className="relative border-l border-white/10 pl-6"
           >
-            {timeline.map((t, i) => (
+            {timeline.map((t) => (
               <motion.div
                 key={t.year}
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
